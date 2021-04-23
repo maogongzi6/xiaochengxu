@@ -1,0 +1,56 @@
+.message {
+  flex-direction: column;
+}
+
+.headline {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.heading {
+  font-size: 50rpx;
+  margin-left: 30rpx;
+}
+
+.state {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 50rpx;
+}
+
+.price {
+  font-size: 50rpx;
+  color: blue;
+  float: right;
+  margin-right: 50rpx;
+}
+
+.content {
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+
+.tag {
+  width: fit-content;
+  box-shadow: 3rpx 3rpx 3rpx 3rpx gray;
+  margin-left: 50rpx;
+  margin-top: 20rpx;
+}
+
+.tag-text {
+  font-size: 30rpx;
+  color: blue;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.order-inform {
+  background-color: white;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  padding-bottom: 30rpx;
+}

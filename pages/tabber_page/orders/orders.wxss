@@ -1,0 +1,28 @@
+@import "./../../../template/order_inform/order_inform.wxss";
+
+.swiper-tab {
+  height: 100rpx;
+  flex-direction: row;
+  display: flex;
+  background-color: white;
+  border-bottom: 2rpx solid #777;
+}
+
+.tab-item {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  text-align: center;
+}
+
+.on {
+  color: rgb(0, 119, 255);
+  border-bottom: 5rpx solid rgb(0, 119, 255);
+}
+
+swiper {
+  min-height: calc(100vh - 100rpx);
+}
+
+scroll-view {
+  height: calc(100vh - 100rpx);
+}

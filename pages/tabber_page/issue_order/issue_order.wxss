@@ -1,0 +1,109 @@
+/* pages/issue_order/issue_order.wxss */
+@import "./../../../template/issue_head/issue_head.wxss";
+
+.element-group {
+  background-color: white;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.element {
+  margin-left: 45rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+/* radio用的是绝对位置，所以需要手动margin一个radio的高度，如果有n行radio就需要乘n */
+.my-picker-margin {
+  margin-bottom: 50rpx;
+}
+
+.my-picker-margin2 {
+  margin-bottom: 150rpx;
+}
+
+.attr-value {
+  float: left;
+  height: 50rpx;
+  margin-bottom: 20rpx;
+  margin-left: 14rpx;
+  margin-right: 25rpx;
+  position: relative;
+}
+
+.my-picker-width {
+  width: 27%;
+}
+
+.my-picker-width2 {
+  width: 40%;
+}
+
+.my-radius {
+  border-radius: 10rpx;
+}
+
+.on {
+  background-color: blue;
+  color: white;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-space-around {
+  justify-content: space-around;
+}
+
+.price-switcher {
+  margin-left: 40rpx;
+}
+
+.radio-label {
+  display: block;
+  text-align: center;
+  line-height: 50rpx;
+}
+ 
+radio {
+  box-sizing: unset;
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+ 
+/* radio未选中时样式 */
+ 
+radio .wx-radio-input {
+  margin-right: 15rpx;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: none;
+  border-radius: 10rpx;
+  box-sizing: unset;
+}
+ 
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+ 
+radio .wx-radio-input.wx-radio-input-checked {
+  background-color: transparent !important;
+  border-block-color: transparent !important;
+  border-inline-color: transparent !important;
+  overflow: hidden;
+  box-sizing: unset;
+}
+ 
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+ 
+radio .wx-radio-input.wx-radio-input-checked::before {
+  font-size: 0rpx; /* 对勾大小 去掉 */
+}

@@ -1,0 +1,19 @@
+<template name="order-inform">
+  <view class="message">
+    <view class="headline">
+      <text class="heading"> {{id}} </text>
+      <text class="heading"> {{title}} </text>
+      <image class="state" src="{{src}}" />
+      <text class="price"> {{price}} </text>
+    </view>
+    <view style="margin-top:10rpx">
+      <text class="content"> 交付时间：{{time}} </text>
+    </view>
+    <view style="margin-top:10rpx">
+      <text class="content"> 其他：{{others}} </text>
+    </view>
+    <view class="tag">
+      <text class="tag-text"> "something" </text>
+    </view>
+  </view>
+</template>

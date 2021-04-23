@@ -1,0 +1,140 @@
+<!--pages/issue_order/issue_order.wxml-->
+<import src="./../../../template/issue_head/issue_head.wxml" />
+
+<view class="">
+  <view class="">
+    <form catchsubmit="formSubmit">
+      <view class="element-group">
+        <view class="element">
+          <template is="issue-head" data="{{tag: true, title: '学校'}}" />
+          <picker bindchange="bindSchoolPicker" range="{{schoolArray}}" name="schoolIndex" value="{{schoolIndex}}">
+            <view class="picker">{{schoolArray[schoolIndex].name}}</view>
+          </picker>
+        </view>
+        <view class="element my-picker-margin">
+          <template is="issue-head" data="{{tag: true, title: '订单类型'}}" />
+          <radio-group bindchange="changeOrderType" name="orderType" >
+            <view wx:for="{{orderType}}" wx:key="index">
+              <view class="attr-value my-picker-width my-radius {{index==orderTypeIndex ? 'on' : ''}}"
+                bindtap="orderTypeChoose" data-index="{{index}}">
+                <radio class="my-radio" value="{{index}}" checked="{{index==orderTypeIndex}}"/>
+                <label class="radio-label">{{item.name}}</label>
+              </view>
+            </view>
+          </radio-group>
+        </view>
+      </view>
+
+      <view class="element-group" wx:if="{{orderTypeIndex>=0}}">
+        <block wx:if="{{orderTypeIndex==0}}">
+          <view class="element">
+            <template is="issue-head" data="{{tag: true, title: '课程名称'}}" />
+            <input type="text" placeholder="你的课程对方可能很感兴趣~" name="lessonName" />
+          </view>
+          <view class="element">
+            <template is="issue-head" data="{{tag: true, title: '具体上课地址'}}" />
+            <textarea placeholder="请详细填写教学楼和教室号" maxlength="100" auto-height="true" name="lessonAddress" />
+            </view>
+          <view class="element my-picker-margin">
+            <template is="issue-head" data="{{tag: false, title: '课程类型'}}" />
+            <radio-group bindchange="changeLessonType" name="lessonTypeIndex">
+              <view wx:for="{{lesson.lessonType}}" wx:key="index">
+                <view class="attr-value my-picker-width my-radius {{index==lesson.lessonTypeIndex ? 'on' : ''}}" bindtap="lessonTypeChoose" data-index="{{index}}">
+                  <radio class="my-radio" value="{{index}}" checked="{{index==lesson.lessonTypeIndex}}" />
+                  <label class="radio-label">{{item.name}}</label>
+                </view>
+              </view>
+            </radio-group>
+          </view>
+          <view class="element my-picker-margin2">
+            <template is="issue-head" data="{{tag: false, title: '课程情况'}}" />
+            <radio-group bindchange="changeLessonState" name="lessonStateIndex">
+              <view wx:for="{{lesson.lessonState}}" wx:key="index">
+                <view class="attr-value my-picker-width2 my-radius {{index==lesson.lessonStateIndex ? 'on' : ''}}" bindtap="lessonStateChoose" data-index="{{index}}">
+                  <radio class="my-radio" value="{{index}}" checked="{{index==lesson.lessonStateIndex}}" />
+                  <label class="radio-label">{{item.name}}</label>
+                </view>
+              </view>
+            </radio-group>
+          </view>          
+          <view class="element my-picker-margin">
+            <template is="issue-head" data="{{tag: true, title: '性别要求'}}" />
+            <radio-group bindchange="changeType" name="sexRequiredIndex">
+              <view wx:for="{{lesson.sexRequired}}" wx:key="index">
+                <view class="attr-value my-picker-width my-radius {{index==lesson.sexRequiredIndex ? 'on' : ''}}" bindtap="sexRequiredChoose" data-index="{{index}}">
+                  <radio class="my-radio" value="{{index}}" checked="{{index==lesson.sexRequiredIndex}}" />
+                  <label class="radio-label">{{item.name}}</label>
+                </view>
+              </view>
+            </radio-group>
+          </view>
+          <view class="element">
+            <template is="issue-head" data="{{tag: true, title: '上课日期'}}" />
+            <picker bindchange="bindDatePicker" mode="date"  name="date">
+              <view class="picker">{{lesson.date}}</view>
+            </picker>
+          </view>
+          <view class="element">
+            <template is="issue-head" data="{{tag: true, title: '上课时间'}}" />
+            <view class="flex-row flex-space-around">
+              <picker bindchange="bindStartTimePicker" mode="time" start="00:00" end="23:59" name="startTime">
+                <view class="picker">{{lesson.startTime}}</view>
+              </picker>
+              <view>———</view>
+              <picker bindchange="bindEndTimePicker" mode="time" start="00:00" end="23:59" name="endTime">
+                <view class="picker">{{lesson.endTime}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="element">
+            <template is="issue-head" data="{{tag: true, title: '价格'}}" />
+            <view class="flex-row">
+              <view>自定义金额</view>
+              <view class="price-switcher">
+                <switch bindchange="priceCustomizeChange" name="customizePrice"/>
+              </view>
+            </view>
+            <view class="flex-row" wx:if="{{lesson.customizePrice}}">
+              <view>请输入金额：</view>
+              <input type="number" name="price"/>
+            </view>
+            <block wx:else>
+              <slider bindchange="bindPriceSlider" min="0" max="200" step="5" show-value="true" name="price">
+                <view>{{lesson.price}}</view>
+              </slider>
+            </block>
+          </view>
+          <view class="element">
+            <template is="issue-head" data="{{tag: false, title: '备注'}}" />
+            <input type="text" placeholder="请仔细填写备注" name="remarks"/>
+          </view>
+        </block>
+        <block wx:elif="{{orderTypeIndex==1}}">
+          <view class="element">代取</view>
+        </block>
+        <block wx:elif="{{orderTypeIndex==2}}">
+          <view class="element">课后辅导</view>
+        </block>
+      </view>
+
+      <view class="element-group">
+        <view class="element">
+          <template is="issue-head" data="{{tag: true, title: '真实姓名'}}" />
+          <input type="text" placeholder="" name="name"/>
+        </view>
+        <view class="element">
+          <template is="issue-head" data="{{tag: true, title: '学号'}}" />
+          <input type="number" placeholder="" name="schoolId"/>
+        </view>
+        <view class="element">
+          <template is="issue-head" data="{{tag: true, title: '电话'}}" />
+          <input type="number" placeholder="" name="phoneNo"/>
+        </view>
+      </view>
+
+      <view>
+        <button form-type="submit">Submit</button>
+      </view>
+    </form>
+  </view>
+</view>

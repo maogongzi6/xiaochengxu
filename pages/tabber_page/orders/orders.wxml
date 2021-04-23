@@ -1,0 +1,33 @@
+<!--pages/orders/orders.wxml-->
+<import src="./../../../template/order_inform/order_inform.wxml" />
+
+<scroll-view style="height: 100rpx;" scroll-x scroll-with-animation="true" scroll-into-view="item{{currentTab < 4 ? 0 : currentTab - 3}}">
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab === index ? 'on' : ''}}" id="item{{index}}" wx:for="{{swiperTabName}}" wx:key="index" data-index="{{index}}"
+      bindtap="switchTab">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
+<swiper class="swiper" bindchange="changeTab" current="{{currentTab}}">
+  <swiper-item wx:for="{{mainList}}" wx:key="index" wx:for-item="listItem" style="height:{{swiperHeight+80}}px">
+    <scroll-view scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}"
+      bindrefresherrefresh="refresherPulling" bindscrolltolower="handleTolower" scroll-top="{{topPos}}">
+
+      <view class="order-list{{listItem.index}}" wx:for="{{listItem.list}}" wx:key="id">
+        <view class="order-inform" bindtap="handleTap" data-item="{{item}}">
+          <template is="order-inform" data="{{...item}}" />
+        </view>
+      </view>
+
+      <view class="weui-loadmore" hidden="{{!loading}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+      <view class="weui-loadmore weui-loadmore_line" hidden="{{hasMore}}">
+        <text class="weui-loadmore__tips">没有更多了</text>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

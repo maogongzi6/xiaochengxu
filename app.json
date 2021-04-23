@@ -1,0 +1,43 @@
+{
+  "entryPagePath": "pages/tabber_page/orders/orders",
+  "pages": [
+    "pages/tabber_page/orders/orders",
+    "pages/tabber_page/my_orders/my_orders",
+    "pages/tabber_page/my_inform/my_inform",
+    "pages/tabber_page/issue_order/issue_order",
+    "pages/order_detail/order_detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#ff00ff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabber_page/orders/orders",
+        "text": "我要接单"
+      },
+      {
+        "pagePath": "pages/tabber_page/issue_order/issue_order",
+        "text": "我要发单"
+      },
+      {
+        "pagePath": "pages/tabber_page/my_orders/my_orders",
+        "text": "我的订单"
+      },
+      {
+        "pagePath": "pages/tabber_page/my_inform/my_inform",
+        "text": "我的信息"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
+}

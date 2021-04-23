@@ -1,0 +1,6 @@
+<template name="issue-head">
+  <view class="main">
+    <text wx:if="{{tag}}" class="tag">*</text>
+    <text class="text">{{title}}</text>
+  </view>
+</template>

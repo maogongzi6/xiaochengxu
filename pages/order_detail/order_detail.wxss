@@ -1,0 +1,7 @@
+/* pages/order_detail/order_detail.wxss */
+@import "./../../template/order_inform/order_inform.wxss";
+
+.order-detail-inform {
+  background-color: white;
+  padding-bottom: 20rpx;
+}

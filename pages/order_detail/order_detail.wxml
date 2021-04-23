@@ -1,0 +1,11 @@
+<!--pages/order_detail/order_detail.wxml-->
+<import src="./../../template/order_inform/order_inform.wxml" />
+
+<view>
+  <view wx:if="{{loaded}}">
+    <template is="order-inform" data="{{...inform}}"/>
+  </view>
+  <view wx:else>
+    <template is="order-inform" data="{{...default}}"/>
+  </view>
+</view>
